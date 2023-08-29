@@ -6,7 +6,7 @@
 Between `{}` provide the target timezone. Supported timezones are   `PT`,`CT`,`ET`,`BUE` and `BCN`.
 
 ```
-> multi_tz -f "{BCN} | {BUE} | {ET} | {CT}"
+> multi_tz -t "{BCN} | {BUE} | {ET} | {CT}"
 20:32:08 | 15:32 | 14:32 | 13:32
 ```
 
@@ -15,7 +15,7 @@ Between `{}` provide the target timezone. Supported timezones are   `PT`,`CT`,`E
 Add the following function to `~/.p10k.zsh`.
 ```
 function prompt_multi_tz(){
-  content=$(multi_tz -f $HERE_GOES_YOUR_TEMPLATE)
+  content=$(multi_tz -t $HERE_GOES_YOUR_TEMPLATE)
   p10k segment -f 6 -i 🌎 -t ${content//\%/%%}
 }
 ```
