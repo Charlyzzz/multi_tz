@@ -3,10 +3,10 @@
 ## Template
 
 `multi_tz` accepts a format argument where you provide the desired template.
-Between `{}` provide the target timezone. Supported timezones are   `PT`,`CT`,`ET`,`BUE` and `BCN`.
+Between `{}` provide the target timezone.
 
 ```
-> multi_tz -t "{BCN} | {BUE} | {ET} | {CT}"
+> multi_tz -t "{BCN} | {BUE} | {EDT} | {CHI}"
 20:32:08 | 15:32 | 14:32 | 13:32
 ```
 
