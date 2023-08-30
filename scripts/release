@@ -1,0 +1,14 @@
+#!env sh
+
+TARGETS=(
+    "x86_64-macos"
+    "x86_64-linux"
+    "x86_64-windows"
+    "aarch64-macos"
+) 
+
+for TARGET in ${TARGETS[*]}
+do
+    zig build -Doptimize=ReleaseFast -Dtarget=$TARGET
+    tar -czf dist/$TARGET.tar.gz zig-out/bin/multi_tz
+done

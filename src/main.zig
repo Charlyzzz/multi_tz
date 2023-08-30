@@ -18,8 +18,6 @@ pub fn main() !void {
 
     var allocator = arena.allocator();
 
-    var tzdb = try timezones.TimezoneDB.new(allocator);
-
     var args = try process.ArgIterator.initWithAllocator(allocator);
     _ = args.skip();
     const flag = args.next() orelse return error.MissingFlag;
@@ -38,7 +36,7 @@ pub fn main() !void {
             isParsingCity = true;
         } else if (char == '}' and isParsingCity) {
             isParsingCity = false;
-            const cityTime = try tzdb.timeAt(now, city.items);
+            const cityTime = try timezones.timeAt(now, city.items);
             try appendIsoTime(allocator, cityTime, &out, citiesSoFar == 0);
             city.clearAndFree();
             citiesSoFar += 1;
